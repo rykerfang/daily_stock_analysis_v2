@@ -220,6 +220,15 @@ jobs:
           LLM_OPENROUTER_ENABLED: ${{ vars.LLM_OPENROUTER_ENABLED || secrets.LLM_OPENROUTER_ENABLED }}
           LLM_OPENROUTER_EXTRA_HEADERS: ${{ vars.LLM_OPENROUTER_EXTRA_HEADERS || secrets.LLM_OPENROUTER_EXTRA_HEADERS }}
 
+          # 腾讯云 TokenHub（DeepSeek-V4-Pro 等模型，OpenAI 兼容协议）
+          LLM_TOKENHUB_PROTOCOL: ${{ vars.LLM_TOKENHUB_PROTOCOL || 'openai' }}
+          LLM_TOKENHUB_BASE_URL: ${{ vars.LLM_TOKENHUB_BASE_URL || 'https://tokenhub.tencentmaas.com/v1' }}
+          LLM_TOKENHUB_API_KEY: ${{ secrets.TOKENHUB_API_KEY }}
+          LLM_TOKENHUB_API_KEYS: ${{ secrets.TOKENHUB_API_KEYS }}
+          LLM_TOKENHUB_MODELS: ${{ vars.LLM_TOKENHUB_MODELS || 'deepseek-v4-pro' }}
+          LLM_TOKENHUB_ENABLED: ${{ vars.LLM_TOKENHUB_ENABLED || 'true' }}
+          LLM_TOKENHUB_EXTRA_HEADERS: ${{ vars.LLM_TOKENHUB_EXTRA_HEADERS || secrets.LLM_TOKENHUB_EXTRA_HEADERS }}
+
           LLM_OLLAMA_PROTOCOL: ${{ vars.LLM_OLLAMA_PROTOCOL || secrets.LLM_OLLAMA_PROTOCOL }}
           LLM_OLLAMA_BASE_URL: ${{ vars.LLM_OLLAMA_BASE_URL || secrets.LLM_OLLAMA_BASE_URL }}
           LLM_OLLAMA_API_KEY: ${{ secrets.LLM_OLLAMA_API_KEY }}
@@ -411,6 +420,7 @@ jobs:
           echo "  AIHubMix Key:   $([ -n "$AIHUBMIX_KEY" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
           echo "  OpenAI API Key: $([ -n "$OPENAI_API_KEY" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
           echo "  Anthropic Key:  $([ -n "$ANTHROPIC_API_KEY" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
+          echo "  TokenHub Key:   $([ -n "$LLM_TOKENHUB_API_KEY" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
           echo ""
           echo "【数据源】"
           echo "  Tushare Token: $([ -n "$TUSHARE_TOKEN" ] && echo '✅ 已配置' || echo '⚪ 未配置')"
